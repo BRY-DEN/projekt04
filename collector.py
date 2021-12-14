@@ -31,8 +31,7 @@ class BRRealEstateOffer:
 
     # date of offer added, output restructured and modified
     def full_description(self) -> str:
-        return f"{self.date[:19]}; {self.price} {self.currency}; {self.key_offer_type}; {self.key_estate_type}; {self.key_disposition}; {self.surface}m2; {self.url}"
-
+        return f"{self.date[:19]}; {format(self.price, ',d')} {self.currency}; {self.key_offer_type}; {self.key_estate_type}; {self.key_disposition}; {self.surface}m2; {self.url}"
 
 class ScraperInitiator:
     """Initiate a new object for the data transfer."""
@@ -53,7 +52,7 @@ class ScraperInitiator:
 session_1 = ScraperInitiator(
     "https://www.bezrealitky.cz/api/record/markers",
     {
-        # 'offerType': 'prodej',  # other options: prodej, pronajem, spolubydleni
+         'offerType': 'prodej',  # other options: prodej, pronajem, spolubydleni
         # 'estateType': 'byt',
         # 'disposition': '3-kk'
         # 'submit': '1', ??? usage?
